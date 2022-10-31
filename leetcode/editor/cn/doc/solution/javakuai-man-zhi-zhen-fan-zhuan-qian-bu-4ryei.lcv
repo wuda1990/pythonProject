@@ -1,0 +1,52 @@
+快慢指针，反转前半部分链表，判断后复原链表
+
+* java
+
+```java
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        // 单节点也默认为回文
+        if (head == null || head.next == null)
+            return true;
+
+        ListNode slow = head, fast = head;
+        // pre为slow的上一节点
+        ListNode pre = null;
+        // 快慢指针同时反转前半部分链表(破坏了原来链表结构)
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            // temp保存slow的下一节点，以免链表断裂
+            ListNode temp = slow.next;
+            // 反转链表
+            slow.next = pre;
+            // pre后移
+            pre = slow;
+            // slow后移
+            slow = temp;
+        }
+        // 应对奇数情况[1,0,1]：当fast.next为null时，fast必为末尾节点
+        if (fast != null)
+            slow = slow.next;
+        // prepre用于恢复原来链表结构
+        ListNode prepre = slow;
+        // 判断是否为回文
+        while (pre != null && slow != null) {
+            if (pre.val != slow.val)
+                return false;
+            slow = slow.next;
+            // 不还原链表时,直接pre = pre.next;
+            // 还原链表，上述while破坏了原有链表结构，建议最好复原
+            // temp保存pre的下一节点，以免反转后的链表断裂
+            ListNode temp = pre.next;
+            // 恢复原来的.next
+            pre.next = prepre;
+            // prepre向前移
+            prepre = pre;
+            // pre前移
+            pre = temp;
+        }
+        return true;
+    }
+}
+```
+
