@@ -59,14 +59,15 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        pre = None
-        cur = head
-        while cur:
-            tmp = cur.next
-            cur.next = pre
-            pre = cur
-            cur = tmp
-        return pre
+        # pre = None
+        # cur = head
+        # while cur:
+        #     tmp = cur.next
+        #     cur.next = pre
+        #     pre = cur
+        #     cur = tmp
+        # return pre
+        return self.internalReverse(head,None)
 
     def internalReverse(self, head, pre):
         if not head:
