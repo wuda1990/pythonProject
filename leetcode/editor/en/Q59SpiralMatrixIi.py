@@ -55,5 +55,5 @@ class Solution(object):
 # leetcode submit region end(Prohibit modification and deletion)
 if __name__ == '__main__':
     solution = Solution()
-    res = solution.generateMatrix(3)
+    res = solution.generateMatrix2(3)
     print(res)

@@ -47,20 +47,20 @@
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution(object):
-    def minSubArrayLen(self, target, nums):
+    def minSubArrayLen1(self, target, nums):
         """
         :type target: int
         :type nums: List[int]
         :rtype: int
         """
         length = float("inf")
-        Sum = 0
+        sum = 0
         start = 0
         for end in range(len(nums)):
-            Sum += nums[end]
-            while Sum >= target:
+            sum += nums[end]
+            while sum >= target:
                 length = min(length, end - start + 1)
-                Sum -= nums[start]
+                sum -= nums[start]
                 start = start + 1
 
         if length == float("inf"):
@@ -68,12 +68,42 @@ class Solution(object):
         else:
             return length
 
+    def minSubArrayLen(self, target, nums):
+        """
+        :type target: int
+        :type nums: List[int]
+        :rtype: int
+        """
+        length = len(nums)
+        sum = [0] * length
+        sum[0] = nums[0]
+        res = length + 1
+        for i, _ in enumerate(nums[1:], 1):
+            sum[i] = sum[i - 1] + nums[i]
+        for i, _ in enumerate(nums):
+            j = self.findRight(sum, i, length - 1, sum[i] + target - nums[i])
+            if j != -1:
+                res = min(res, j - i + 1)
+        return 0 if res == length+1 else res
+
+    def findRight(self, nums, left, right, target):
+        while left < right:
+            mid = left + ((right - left) >> 1)
+            if nums[mid] >= target:
+                right = mid
+            else:
+                left = mid + 1
+        if nums[right] >= target:
+            return right
+        return -1
+
 
 # leetcode submit region end(Prohibit modification and deletion)
 if __name__ == '__main__':
     print("I'm a car!")
     solution = Solution()
-    nums = [2, 3, 1, 2, 4, 3]
-    res = solution.minSubArrayLen(7, nums)
+    nums = [1, 1, 1, 1, 1, 1, 1, 1]
+    res = solution.minSubArrayLen(11, nums)
     print(res)
-
+    # sum = [2, 5, 6, 8, 12, 15]
+    # print(solution.findRight(sum, 2, 5, 18))
