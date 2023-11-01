@@ -55,13 +55,13 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+        # use a dictionary to store the number and its index
         d = {}
-        for i,n in enumerate(nums):
-            m = target-n
+        for i, n in enumerate(nums):
+            m = target - n
             if m in d:
-                return [d[m],i]
+                return [d[m], i]
             else:
-                d[n]=i
+                d[n] = i
 
-        
 # leetcode submit region end(Prohibit modification and deletion)
