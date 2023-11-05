@@ -53,4 +53,9 @@ class Solution:
                 r = mid
         return -1
 
+
 # leetcode submit region end(Prohibit modification and deletion)
+# write a test
+if __name__ == '__main__':
+    # print(Solution().search([-1, 0, 3, 5, 9, 12], 9))
+    print(Solution().search([3, 5], 3))

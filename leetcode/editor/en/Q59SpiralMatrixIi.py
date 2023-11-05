@@ -38,6 +38,7 @@ class Solution(object):
         while (lo > 1):
             lo, hi = lo - len(A), lo
             A = [list(range(lo, hi))] + list(zip(*A[::-1]))
+            print(A)
         return A
 
     def generateMatrix2(self, n):
@@ -55,5 +56,5 @@ class Solution(object):
 # leetcode submit region end(Prohibit modification and deletion)
 if __name__ == '__main__':
     solution = Solution()
-    res = solution.generateMatrix2(3)
+    res = solution.generateMatrix(3)
     print(res)
