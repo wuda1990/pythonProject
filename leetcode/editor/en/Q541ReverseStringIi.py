@@ -36,20 +36,11 @@ class Solution(object):
         :rtype: str
         """
         length = len(s)
-        text = list(s)
         for i in range(0, length, 2 * k):
             right = i + k
             right = right if right < length else length
             s = s[:i] + s[i:right][::-1] + s[right:]
-            # self.reverse(text, i, right-1)
         return s
-        # return "".join(text)
-
-    def reverse(self, s, left, right):
-        while left < right:
-            s[left], s[right] = s[right], s[left]
-            left += 1
-            right -= 1
 
 
 # leetcode submit region end(Prohibit modification and deletion)
