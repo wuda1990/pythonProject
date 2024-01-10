@@ -60,8 +60,8 @@ def quicksort(array, low, high):
         # Find pivot element such that
         # element smaller than pivot are on the left
         # element greater than pivot are on the right
-        # pi = partition(array, low, high)
-        pi = partitionLeftPivotal(array, low, high)
+        pi = partition(array, low, high)
+        # pi = partitionLeftPivotal(array, low, high)
 
         # Recursive call on the left of pivot
         quicksort(array, low, pi - 1)
@@ -72,7 +72,7 @@ def quicksort(array, low, high):
 
 # Driver code
 if __name__ == '__main__':
-    array = [10, 7, 8, 9, 1, 5, 4, 3, 2]
+    array = [8,3,40,7,91,32]
     N = len(array)
 
     # Function call

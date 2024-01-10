@@ -3,3 +3,4 @@
 * [Q977SquaresOfASortedArray](../Q977SquaresOfASortedArray.py)
 * [Q209MinimumSizeSubarraySum](../Q209MinimumSizeSubarraySum.py)
 * [Q59SpiralMatrixII](../Q59SpiralMatrixII.py)
+* [QuickSort](../QuickSort.py)
