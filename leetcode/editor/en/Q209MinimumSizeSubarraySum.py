@@ -47,63 +47,28 @@
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution(object):
-    def minSubArrayLen1(self, target, nums):
-        """
-        :type target: int
-        :type nums: List[int]
-        :rtype: int
-        """
-        length = float("inf")
-        sum = 0
-        start = 0
-        for end in range(len(nums)):
-            sum += nums[end]
-            while sum >= target:
-                length = min(length, end - start + 1)
-                sum -= nums[start]
-                start = start + 1
-
-        if length == float("inf"):
-            return 0
-        else:
-            return length
-
     def minSubArrayLen(self, target, nums):
         """
         :type target: int
         :type nums: List[int]
         :rtype: int
         """
-        length = len(nums)
-        sum = [0] * length
-        sum[0] = nums[0]
-        res = length + 1
-        for i, _ in enumerate(nums[1:], 1):
-            sum[i] = sum[i - 1] + nums[i]
-        for i, _ in enumerate(nums):
-            j = self.findRight(sum, i, length - 1, sum[i] + target - nums[i])
-            if j != -1:
-                res = min(res, j - i + 1)
-        return 0 if res == length+1 else res
-
-    def findRight(self, nums, left, right, target):
-        while left < right:
-            mid = left + ((right - left) >> 1)
-            if nums[mid] >= target:
-                right = mid
-            else:
-                left = mid + 1
-        if nums[right] >= target:
-            return right
-        return -1
+        i, j = 0, 0
+        total = 0
+        min_len = float('inf')
+        while j < len(nums):
+            total = total + nums[j]
+            while total >= target:
+                min_len = min(min_len, j - i + 1)
+                total -= nums[i]
+                i += 1
+            j += 1
+        if min_len == float('inf'):
+            return 0
+        return min_len
 
 
 # leetcode submit region end(Prohibit modification and deletion)
 if __name__ == '__main__':
-    print("I'm a car!")
     solution = Solution()
-    nums = [1, 1, 1, 1, 1, 1, 1, 1]
-    res = solution.minSubArrayLen(11, nums)
-    print(res)
-    # sum = [2, 5, 6, 8, 12, 15]
-    # print(solution.findRight(sum, 2, 5, 18))
+    print(solution.minSubArrayLen(7, [2, 3, 1, 2, 4, 3]))
