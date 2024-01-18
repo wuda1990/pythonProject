@@ -72,7 +72,7 @@ def quicksort(array, low, high):
 
 # Driver code
 if __name__ == '__main__':
-    array = [8,3,40,7,91,32]
+    array = [8, 3, 40, 7, 91, 32]
     N = len(array)
 
     # Function call
