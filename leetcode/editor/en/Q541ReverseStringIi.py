@@ -42,8 +42,17 @@ class Solution(object):
             s = s[:i] + s[i:right][::-1] + s[right:]
         return s
 
+    def reverseStr2(self, s, k):
+        length = len(s)
+        s_list = list(s)
+        for i in range(0, length, 2 * k):
+            s_list[i:i + k] = s[i:i + k][::-1]
+            # s_list[i:i + k] = reversed(s[i:i + k])
+        return ''.join(s_list)
+
 
 # leetcode submit region end(Prohibit modification and deletion)
 
 solution = Solution()
-print(solution.reverseStr('abcdefg', 2))
+print(solution.reverseStr2('abcdefg', 2))
+print(solution.reverseStr2('abcdefgh', 3))
