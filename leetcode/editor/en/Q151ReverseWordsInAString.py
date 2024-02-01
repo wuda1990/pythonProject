@@ -37,6 +37,7 @@ class Solution:
         s = s.strip()
         s = s[::-1]
         s = ''.join(word[::-1] + ' ' for word in s.split())
+        s = s.rstrip()
         return s
 
     def reverseWords3(self, s: str) -> str:

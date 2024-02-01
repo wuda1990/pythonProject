@@ -47,6 +47,32 @@ class Solution(object):
         """
         if s is None:
             return False
-        combine = (s+s)[1:-1]
+        combine = (s + s)[1:-1]
         return combine.find(s) != -1
+
+    def repeatedSubstringPatternKMP(self, s):
+        length = len(s)
+        if length == 0:
+            return False
+        next = self.getNext(s)
+        return next[length - 1] != -1 and length % (length - next[length - 1] - 1) == 0
+
+    # get the next arr of string
+    def getNext(self, s):
+        next = [-1] * len(s)
+        j = -1
+        for i in range(1, len(s)):
+            while s[i] != s[j + 1] and j > -1:
+                j = next[j]
+            if s[i] == s[j + 1]:
+                j += 1
+            next[i] = j
+        return next
+
+
 # leetcode submit region end(Prohibit modification and deletion)
+if __name__ == '__main__':
+    solution = Solution()
+    print(solution.repeatedSubstringPatternKMP("ababba"))
+    # print(solution.repeatedSubstringPatternKMP('aba'))
+    # print(solution.repeatedSubstringPatternKMP('abcabc'))
