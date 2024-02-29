@@ -64,4 +64,8 @@ class Solution(object):
             else:
                 d[n] = i
 
+
 # leetcode submit region end(Prohibit modification and deletion)
+
+s = Solution()
+print(s.twoSum([5, 5, 3], 13))
