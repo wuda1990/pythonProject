@@ -13,7 +13,7 @@ def heapify(arr, N, i):
 
 def heap_sort(arr):
     length = len(arr)
-    mid = (length - 2) // 2
+    mid = length // 2
     for i in range(mid, -1, -1):
         heapify(arr, length, i)
     for i in range(length - 1, -1, -1):

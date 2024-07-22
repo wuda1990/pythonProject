@@ -72,5 +72,5 @@ class Solution:
 # leetcode submit region end(Prohibit modification and deletion)
 # write a test
 if __name__ == '__main__':
-    # print(Solution().search([-1, 0, 3, 5, 9, 12], 9))
-    print(Solution().search2([5], 5))
+    print(Solution().search([-1, 0, 3, 5, 9, 12], 9))
+    print(Solution().search2([-1, 0, 3, 5, 9, 12], 9))
