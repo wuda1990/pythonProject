@@ -41,9 +41,36 @@ class Solution(object):
         a_count = Counter(s)
         b_count = Counter(t)
         return a_count == b_count
+    
+    def isAnagram2(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        # 定义一个字典，用来存储每个字符出现的次数
+        char_count = {}
+        # 遍历字符串s，统计每个字符出现的次数
+        for char in s:
+            if char in char_count:
+                char_count[char] += 1
+            else:
+                char_count[char] = 1
+        # 遍历字符串t，判断每个字符是否出现过，以及出现的次数是否与s相同
+        for char in t:
+            if char not in char_count:
+                return False
+            char_count[char] -= 1
+        # 检查字典中是否所有字符的出现次数都为0
+        for count in char_count.values():
+            if count != 0:
+                return False
+        return True
 
 
 # leetcode submit region end(Prohibit modification and deletion)
 
 s = Solution()
-print(s.isAnagram("hello", "lloeh"))
+print(s.isAnagram2("hello", "lloeh"))
+print(s.isAnagram2("hello1", "llo2eh2"))
+

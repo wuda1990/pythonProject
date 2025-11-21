@@ -54,3 +54,8 @@ class Solution:
         return p is q
         
 # leetcode submit region end(Prohibit modification and deletion)
+
+# define a test case
+p = TreeNode(1, TreeNode(2), TreeNode(3))
+q = TreeNode(1, TreeNode(222), TreeNode(3))
+print(Solution().isSameTree(p, q))
