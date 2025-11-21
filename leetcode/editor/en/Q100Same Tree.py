@@ -52,10 +52,31 @@ class Solution:
                    self.isSameTree(p.left, q.left) and \
                    self.isSameTree(p.right, q.right)
         return p is q
+
+    def isSameTree2(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        # use breadth-first search
+        if not p and not q:
+            return True
+        if not p or not q:
+            return False
+        queue = [(p, q)]
+        while queue:
+            p, q = queue.pop(0)
+            if p.val != q.val:
+                return False
+            if p.left and q.left:
+                queue.append((p.left, q.left))
+            elif p.left or q.left:
+                return False
+            if p.right and q.right:
+                queue.append((p.right, q.right))
+            elif p.right or q.right:
+                return False
+        return True
         
 # leetcode submit region end(Prohibit modification and deletion)
 
 # define a test case
 p = TreeNode(1, TreeNode(2), TreeNode(3))
-q = TreeNode(1, TreeNode(222), TreeNode(3))
-print(Solution().isSameTree(p, q))
+q = TreeNode(1, TreeNode(2), TreeNode(3))
+print(Solution().isSameTree2(p, q))
